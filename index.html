@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="renderer" content="webkit">
+		<title>扁平化，简单信息提示框</title>
+		<link rel="shortcut icon" href="//api.qiubg.com/favicon.ico"/>
+		<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			button{
+				margin-right:20px;
+			}
+		</style>
+	</head>	
+
+	<body>
+		<div class="container" style="text-align:center;">
+			<div style="display: inline-block;margin-top:20px; text-align: center;">
+				<button data-type='1' type="button" class="btn btn-info">同时显示多个消息</button>
+
+				<button data-type='2' type="button" class="btn btn-info">在顶部添加一条消息</button>
+
+				<button data-type='3' type="button" class="btn btn-info">在底部添加一条消息</button>
+
+				<button data-type='4' type="button" class="btn btn-info">在中间添加一条消息</button>
+			</div>
+		</div>
+
+		<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="//api.qiubg.com/static/style/js/demo/prompt.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				prompt.init({'fontSize':13});
+				prompt.color = '#28a745';
+			});
+
+			var moreMsg = {
+				'0':{msg:'望月怀远', position:'top'},
+				'1':{msg:'海上生明月', position:'top'},
+				'2':{msg:'天涯共此时', position:'bottom'},
+				'3':{msg:'情人怨遥夜', position:'bottom'},
+				'4':{msg:'竟夕起相思', position:'bottom'},
+				'5':{msg:'灭烛怜光满', position:'center'},
+				'6':{msg:'披衣觉露滋', position:'bottom'},
+				'7':{msg:'不堪盈手赠', position:'bottom'},
+				'8':{msg:'还寝梦佳期', position:'bottom'}
+			}
+
+			var singleMsg = ['仿佛有痛楚，如果我晕眩', '那是因为幻觉丰盛，能量薄弱', '给我一个理由忘记', '天没有边，没有界', '心是花园，也是荒野', '光阴在花绽开中消亡', '歌舞却永不停下', '将一片云纱与你', '敢不敢，愿不愿，一起飞越长空'];
+
+			$('button').click(function(){
+				var type = $(this).data('type');
+
+				switch(type)
+				{
+					case 1:
+						addMore();
+						break;
+					case 2:
+						add('top');
+						break;
+					case 3:
+						add('bottom');
+						break;
+					case 4:
+						add('center');
+						break;
+					default:
+						break;
+				}
+			});
+
+			function addMore()
+			{
+				for(var key in moreMsg)
+				{
+					prompt.add(moreMsg[key].msg, moreMsg[key].position);
+				}
+			}
+
+			function add(value)
+			{
+				var content = singleMsg[Math.floor(singleMsg.length * Math.random())];
+				prompt.add(content, value);
+			}
+		</script>
+	</body>
+</html>

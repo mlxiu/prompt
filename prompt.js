@@ -71,7 +71,8 @@ var prompt;
 	var theself;
 	var console = window.console || {log:function(value){}};
 	
-	function Prompt(){
+	function Prompt()
+	{
 		this.running = 0;
 		this.list = [];
 		this.timer = null;
@@ -81,7 +82,7 @@ var prompt;
 		theself = this;
 
 		$(window).resize(Prompt.resize);
-	}
+	};
 
 	Prompt.top = 'top';
 
@@ -103,7 +104,8 @@ var prompt;
 	Prompt.prototype = {
 		constructor: Prompt,
 
-		init:function(options){
+		init:function(options)
+		{
 			this.max = Prompt.analysisOptions(options, 'max', 4); 
 			this.delay = Prompt.analysisOptions(options, 'delay', 2.8 * 1000);
 			this.height = Prompt.analysisOptions(options, 'height', 50);
@@ -115,7 +117,8 @@ var prompt;
 			this.borderColor = Prompt.analysisOptions(options, 'borderColor', '#d7fae3');	
 		},
 
-		add:function(content, position = null){
+		add:function(content, position = null)
+		{
 			if(!content)return;
 
 			if(!position || (position != Prompt.top && position != Prompt.center && position != Prompt.bottom)){
@@ -125,9 +128,10 @@ var prompt;
 			theself.list.push({content:content, position:position});
 			Prompt.run();
 		}
-	}
+	};
 
-	Prompt.run = function(){
+	Prompt.run = function()
+	{
 		if(!theself.list || theself.list.length <= 0 || theself.running >= theself.max)
 		{
 			return;
@@ -142,7 +146,8 @@ var prompt;
 			return;
 		}
 
-		if(theself.runCenter){
+		if(theself.runCenter)
+		{
 			theself.list.unshift(curMsg);
 			return;
 		}
@@ -184,6 +189,7 @@ var prompt;
 			element = $(html);
 			element.animate({'bottom': 0, 'opacity':1}, 'swing');
 		}
+
 		$('body').append(element);
 		theself.running ++;
 
@@ -292,8 +298,7 @@ var prompt;
 
 		if($('.prompt').length <= 0)
 		{
-			clearInterval(theself.timer);
-			theself.timer = null;
+			Prompt.stopTimer();
 		}
 	};
 
@@ -306,7 +311,7 @@ var prompt;
 				$(this).css('height', $(window).height());
 			}
 		});
-	}
+	};
 
 	// 当下一个提示框是居中提示，阻塞后续展示。当之前的提示框展示完毕，才开始从居中这个开始展示。
 	Prompt.nextCenterListener = function(){
@@ -334,7 +339,7 @@ var prompt;
 				Prompt.run();
 			}
 		})
-	}
+	};
 
 	Prompt.startTimer = function()
 	{
