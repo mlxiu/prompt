@@ -45,5 +45,4 @@ add方法，用来添加提示消息。第一个参数是提示消息的内容�
 ```javascript
   prompt.fontSize = 14;
 ```
- 
 这些修改，都必须在add方法之前操作。
