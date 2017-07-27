@@ -1,6 +1,6 @@
 扁平化，简单信息提示框。类似七牛后台提示框。
 
-> demo: [https://api.qiubg.com/static/demo/prompt.html](https://api.qiubg.com/static/demo/prompt.html)
+> [https://api.qiubg.com/static/demo/prompt.html](https://api.qiubg.com/static/demo/prompt.html)
 
 ### 依赖
 jquery
