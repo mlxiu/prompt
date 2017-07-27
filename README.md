@@ -1,4 +1,3 @@
-### 功能
 扁平化，简单信息提示框。类似七牛后台提示框。
 
 ### 依赖
@@ -33,15 +32,13 @@ add方法，用来添加提示消息。第一个参数是提示消息的内容�
 8. backgroundColor 提示框的背景颜色。默认#d7fae3
 9. borderColor 提示框的边框颜色。默认#d7fae3
 
-默认有一套默认值。引入js就可以使用。如果想修改默认值，可以通过init方法。
-eg：
+默认有一套默认值。引入js就可以使用。如果想修改默认值，可以通过init方法。eg：
 
 ```javascript
   prompt.init({'fontSize':14, 'max':3, 'height': 45});
 ```
 
-还可以直接修改。
-eg：
+还可以直接修改。eg：
 
 ```javascript
   prompt.fontSize = 14;
